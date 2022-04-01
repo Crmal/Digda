@@ -149,11 +149,10 @@ h1 {
   font-size: 20px;
   text-align: center;
   top: 20%;
-  left: 40%;
-  float: left;
+  left: 30%;
   width: 400px;
   height: 550px;
-  margin: 0px auto;
+  margin: 0 auto;
   background: #3d3f43;
   z-index: 2;
 }
