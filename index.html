@@ -61,6 +61,7 @@
       </div>
     </div>
     <script>
+      // 버튼 클릭시 게임시작
       var startBtn = document.querySelector(".start-btn");
 
       startBtn.addEventListener("click", startMole);
@@ -69,9 +70,11 @@
         startBtn.removeEventListener("click", startMole);
         startBtn.style.color = "#3d3f43";
         getPoint = 0;
+        point = 0;
         turn = 0;
         setTimeout(showingMole, 1000);
       }
+      // 두더지 랜덤하게 구멍에서 등장하기
       var moleNumber;
       var randomNum;
       var preNum;
@@ -96,9 +99,9 @@
       function showingMole() {
         if (turn < 10) {
           moleNumber = document.getElementById(`${randomHole()}`);
-          moleActive(moleNumber);
+          moleActive(0);
           moleNumber.addEventListener("click", catchMole);
-          moleCatch = setTimeout(seeMOle, 800);
+          moleCatch = setTimeout(seeMOle, 1000);
           turn++;
         } else {
           modalEvent();
@@ -107,14 +110,14 @@
           startBtn.style.color = "#f2ecff";
         }
       }
-
+      // 게임 엔딩 + 다시 하기 버튼 실행
       var endingBtn = document.querySelector("#ending-bg");
       var finalEnding = "finalEnding";
 
       endingBtn.addEventListener("click", hideModal);
 
       function modalEvent() {
-        let point = (getPoint / 10) * 100;
+        let point = getPoint * 10;
         if (point <= 70) {
           ending.children[0].innerHTML =
             "<span>GAME OVER </span></br>YOUR SCORE IS&nbsp;&nbsp;<span class='last'>" +
@@ -133,6 +136,8 @@
         ending.classList.remove(finalEnding);
         endingBtn.classList.remove(finalEnding);
       }
+
+      // 클릭으로 두더지 잡기
       var cntBox = document.querySelector("#count-mole");
       function seeMOle() {
         moleNumber.removeEventListener("click", catchMole);
