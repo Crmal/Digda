@@ -99,7 +99,7 @@
       function showingMole() {
         if (turn < 10) {
           moleNumber = document.getElementById(`${randomHole()}`);
-          moleActive(0);
+          moleActive(moleNumber);
           moleNumber.addEventListener("click", catchMole);
           moleCatch = setTimeout(seeMOle, 1000);
           turn++;
